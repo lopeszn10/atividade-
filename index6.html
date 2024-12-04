@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A6</title>
+</head>
+<body>
+    <h3>Digite a idade de 20 pessoas</h3>
+
+    <div id="inputs">
+        <input type="number" id="idade1" placeholder="Idade 1"><br>
+        <input type="number" id="idade2" placeholder="Idade 2"><br>
+        <input type="number" id="idade3" placeholder="Idade 3"><br>
+        <input type="number" id="idade4" placeholder="Idade 4"><br>
+        <input type="number" id="idade5" placeholder="Idade 5"><br>
+        <input type="number" id="idade6" placeholder="Idade 6"><br>
+        <input type="number" id="idade7" placeholder="Idade 7"><br>
+        <input type="number" id="idade8" placeholder="Idade 8"><br>
+        <input type="number" id="idade9" placeholder="Idade 9"><br>
+        <input type="number" id="idade10" placeholder="Idade 10"><br>
+        <input type="number" id="idade11" placeholder="Idade 11"><br>
+        <input type="number" id="idade12" placeholder="Idade 12"><br>
+        <input type="number" id="idade13" placeholder="Idade 13"><br>
+        <input type="number" id="idade14" placeholder="Idade 14"><br>
+        <input type="number" id="idade15" placeholder="Idade 15"><br>
+        <input type="number" id="idade16" placeholder="Idade 16"><br>
+        <input type="number" id="idade17" placeholder="Idade 17"><br>
+        <input type="number" id="idade18" placeholder="Idade 18"><br>
+        <input type="number" id="idade19" placeholder="Idade 19"><br>
+        <input type="number" id="idade20" placeholder="Idade 20"><br>
+    </div>
+
+    <button onclick="calcularSoma()">Calcular Soma das Idades</button>
+
+    <div id="resultado"></div>
+
+    <script>
+     
+        function calcularSoma() {
+        
+            let soma = 0;
+            for (let i = 1; i <= 20; i++) {
+                let idade = parseFloat(document.getElementById("idade" + i).value);
+            
+                if (isNaN(idade)) {
+                    document.getElementById("resultado").textContent = "Por favor, insira todas as 20 idades corretamente.";
+                    return;
+                }
+                soma += idade; 
+            }
+
+          
+            document.getElementById("resultado").textContent = "A soma das idades é: " + soma;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A3</title>
+</head>
+<body>
+    <h3>Digite seu nome</h3>
+
+    <input type="text" id="nome" placeholder="Digite seu nome">
+    <button onclick="exibirNome()">Exibir Nome</button>
+
+    <div id="resultado"></div>
+
+    <script>
+        
+        function exibirNome() {
+            
+            let nome = document.getElementById("nome").value;
+
+            document.getElementById("resultado").innerHTML = "";
+
+            if (nome.trim() !== "") {
+               
+                for (let i = 0; i < 10; i++) {
+                  
+                    let p = document.createElement("p");
+                    p.textContent = nome; 
+                    document.getElementById("resultado").appendChild(p);
+                }
+            } else {
+                document.getElementById("resultado").textContent = "Por favor, digite um nome.";
+            }
+        }
+    </script>
+</body>
+</html>

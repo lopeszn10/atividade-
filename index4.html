@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A4</title>
+</head>
+<body>
+    <h3>Digite seu nome e o número de vezes</h3>
+
+    
+    <input type="text" id="nome" placeholder="Digite seu nome">
+    
+    <input type="number" id="vezes" placeholder="Digite o número de vezes">
+    
+   
+    <button onclick="exibirNome()">Exibir Nome</button>
+
+   
+    <div id="resultado"></div>
+
+    <script>
+     
+        function exibirNome() {
+            
+            let nome = document.getElementById("nome").value;
+            let vezes = parseInt(document.getElementById("vezes").value);
+
+           
+            document.getElementById("resultado").innerHTML = "";
+
+         
+            if (nome.trim() === "" || isNaN(vezes) || vezes <= 0) {
+                document.getElementById("resultado").textContent = "Por favor, insira um nome válido e um número de vezes maior que 0.";
+            } else {
+                
+                for (let i = 0; i < vezes; i++) {
+                    let p = document.createElement("p");
+                    p.textContent = nome; 
+                    document.getElementById("resultado").appendChild(p); 
+                }
+            }
+        }
+    </script>
+</body>
+</html>
