@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A14</title>
+</head>
+<body>
+  <h3>Contar Números em Intervalos</h3>
+  <p>Digite até 20 números:</p>
+  <input type="number" id="numero" placeholder="Digite um número" />
+  <button onclick="adicionarNumero()">Adicionar Número</button>
+  <p id="numerosAdicionados"></p>
+  <button onclick="verificarIntervalos()">Verificar Intervalos</button>
+  <p id="resultado"></p>
+
+  <script>
+    const numeros = [];
+
+    function adicionarNumero() {
+      const numeroInput = parseFloat(document.getElementById('numero').value);
+
+      if (!isNaN(numeroInput)) {
+        numeros.push(numeroInput);
+        document.getElementById('numero').value = ''; // Limpa o campo de entrada
+        document.getElementById('numerosAdicionados').innerText = `Números adicionados: ${numeros.join(', ')}`;
+      } else {
+        alert('Por favor, insira um número válido!');
+      }
+
+      if (numeros.length >= 20) {
+        document.getElementById('numero').disabled = true;
+        alert('Você atingiu o limite de 20 números!');
+      }
+    }
+
+    function verificarIntervalos() {
+      const entre0e100 = numeros.filter(numero => numero >= 0 && numero <= 100).length;
+      const entre101e200 = numeros.filter(numero => numero >= 101 && numero <= 200).length;
+      const maiores200 = numeros.filter(numero => numero > 200).length;
+
+      document.getElementById('resultado').innerHTML = `
+        <p>Quantidade de números entre 0 e 100: ${entre0e100}</p>
+        <p>Quantidade de números entre 101 e 200: ${entre101e200}</p>
+        <p>Quantidade de números maiores que 200: ${maiores200}</p>
+      `;
+    }
+  </script>
+</body>
+</html>

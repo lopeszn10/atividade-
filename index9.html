@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A9</title>
+</head>
+<body>
+  <h3>Encontre a Pessoa Mais Nova</h3>
+  <div id="formulario">
+    <p>Digite o nome e a idade:</p>
+    <input type="text" id="nome" placeholder="Nome" />
+    <input type="number" id="idade" placeholder="Idade" />
+    <button onclick="adicionarPessoa()">Adicionar Pessoa</button>
+  </div>
+  <p id="resultado"></p>
+  <button onclick="mostrarMaisNova()">Mostrar Pessoa Mais Nova</button>
+
+  <script>
+    const pessoas = [];
+
+    function adicionarPessoa() {
+      const nomeInput = document.getElementById('nome').value;
+      const idadeInput = parseInt(document.getElementById('idade').value);
+
+      if (nomeInput && !isNaN(idadeInput) && idadeInput >= 0) {
+        pessoas.push({ nome: nomeInput, idade: idadeInput });
+        document.getElementById('nome').value = ''; 
+        document.getElementById('idade').value = ''; 
+        document.getElementById('resultado').innerText = `Pessoas cadastradas: ${pessoas.map(p => p.nome).join(', ')}`;
+      } else {
+        alert('Por favor, insira um nome e uma idade válidos!');
+      }
+
+      if (pessoas.length >= 10) {
+        document.getElementById('formulario').style.display = 'none';
+        alert('Limite de 10 pessoas atingido!');
+      }
+    }
+
+    function mostrarMaisNova() {
+      if (pessoas.length === 0) {
+        alert('Nenhuma pessoa cadastrada ainda!');
+        return;
+      }
+      const maisNova = pessoas.reduce((menor, atual) => (atual.idade < menor.idade ? atual : menor));
+      document.getElementById('resultado').innerText = `A pessoa mais nova é ${maisNova.nome}, com ${maisNova.idade} anos.`;
+    }
+  </script>
+</body>
+</html>

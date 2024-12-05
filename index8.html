@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A8</title>
+</head>
+<body>
+  <h3>Verificador de Maiores de Idade</h3>
+  <div id="inputs">
+    <p>Digite as idades:</p>
+    <input type="number" id="idade" placeholder="Digite uma idade" />
+    <button onclick="adicionarIdade()">Adicionar</button>
+  </div>
+  <p id="resultado"></p>
+  <button onclick="verificarMaiores()">Verificar Maiores de Idade</button>
+
+  <script>
+    let idades = [];
+
+    function adicionarIdade() {
+      const idadeInput = document.getElementById('idade');
+      const idade = parseInt(idadeInput.value);
+
+      if (!isNaN(idade) && idade >= 0) {
+        idades.push(idade);
+        idadeInput.value = ''; // Limpa o campo de entrada
+        document.getElementById('resultado').innerText = `Idades adicionadas: ${idades.join(', ')}`;
+      } else {
+        alert('Por favor, insira uma idade válida!');
+      }
+
+      if (idades.length >= 20) {
+        document.getElementById('inputs').style.display = 'none';
+        alert('Limite de 20 idades atingido!');
+      }
+    }
+
+    function verificarMaiores() {
+      const maiores = idades.filter(idade => idade >= 18).length;
+      document.getElementById('resultado').innerText = `Pessoas maiores de idade: ${maiores}`;
+    }
+  </script>
+</body>
+</html>

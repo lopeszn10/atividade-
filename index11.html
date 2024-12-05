@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A11</title>
+</head>
+<body>
+  <h3>Verificar Números Maiores que 8</h3>
+  <p>Digite até 20 números:</p>
+  <input type="number" id="numero" placeholder="Digite um número" />
+  <button onclick="adicionarNumero()">Adicionar Número</button>
+  <p id="numerosAdicionados"></p>
+  <button onclick="verificarMaiores()">Verificar Quantidade</button>
+  <p id="resultado"></p>
+
+  <script>
+    const numeros = [];
+
+    function adicionarNumero() {
+      const numeroInput = parseFloat(document.getElementById('numero').value);
+
+      if (!isNaN(numeroInput)) {
+        numeros.push(numeroInput);
+        document.getElementById('numero').value = ''; 
+        document.getElementById('numerosAdicionados').innerText = `Números adicionados: ${numeros.join(', ')}`;
+      } else {
+        alert('Por favor, insira um número válido!');
+      }
+
+      if (numeros.length >= 20) {
+        document.getElementById('numero').disabled = true;
+        alert('Você atingiu o limite de 20 números!');
+      }
+    }
+
+    function verificarMaiores() {
+      const maioresQue8 = numeros.filter(numero => numero > 8).length;
+      document.getElementById('resultado').innerText = `Quantidade de números maiores que 8: ${maioresQue8}`;
+    }
+  </script>
+</body>
+</html>

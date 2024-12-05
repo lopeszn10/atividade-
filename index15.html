@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A15</title>
+</head>
+<body>
+  <h3>Somar Números Positivos</h3>
+  <p>Digite números para somar. Digite um número negativo para encerrar.</p>
+  <input type="number" id="numero" placeholder="Digite um número" />
+  <button onclick="adicionarNumero()">Adicionar Número</button>
+  <p id="numerosAdicionados"></p>
+  <p id="resultado"></p>
+
+  <script>
+    let soma = 0;
+    const numeros = [];
+
+    function adicionarNumero() {
+      const numero = parseFloat(document.getElementById('numero').value);
+
+      if (!isNaN(numero)) {
+        if (numero < 0) {
+          document.getElementById('resultado').innerText = `A soma dos números é: ${soma}`;
+          document.getElementById('numero').disabled = true; // Desativa a entrada
+          alert('Número negativo digitado! Soma finalizada.');
+        } else {
+          soma += numero;
+          numeros.push(numero);
+          document.getElementById('numerosAdicionados').innerText = `Números adicionados: ${numeros.join(', ')}`;
+        }
+        document.getElementById('numero').value = ''; // Limpa o campo de entrada
+      } else {
+        alert('Por favor, insira um número válido!');
+      }
+    }
+  </script>
+</body>
+</html>

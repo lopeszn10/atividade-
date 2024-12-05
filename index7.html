@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A7</title>
+</head>
+<body>
+    <h3>Cálculo da Média de Idades</h3>
+    <div id="inputs"></div>
+    <button onclick="calcularMedia()">Calcular Média</button>
+    <p id="resultado"></p>
+
+    <script>
+        const inputsDiv = document.getElementById('inputs');
+
+        for (let i = 1; i <= 20; i++) {
+            const input = document.createElement('input');
+            input.type = 'number';
+            input.placeholder = `Idade ${i}`;
+            input.id = `idade${i}`;
+            inputsDiv.appendChild(input);
+            inputsDiv.appendChild(document.createElement('br'));
+        }
+
+        function calcularMedia() {
+            let soma = 0;
+            let total = 0;
+
+            for (let i = 1; i <= 20; i++) {
+                const idade = parseInt(document.getElementById(`idade${i}`).value);
+                if (!isNaN(idade)) { // 
+                    soma += idade;
+                    total++;
+                }
+            }
+
+            const media = total > 0 ? (soma / total).toFixed(2) : 0;
+            document.getElementById('resultado').textContent = `Média das idades: ${media}`;
+        }
+    </script>
+</body>
+</html>
